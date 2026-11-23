@@ -1,0 +1,26 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='customer_id',
+        incremental_strategy='merge'
+    )
+}}
+
+SELECT
+    *,
+    CURRENT_TIMESTAMP() AS processed_at
+
+FROM {{ source('walmart_databricks', 'customers') }}
+
+
+{% if is_incremental() %}
+
+    WHERE updated_timestamp >= (
+        SELECT COALESCE(
+            MAX(updated_timestamp),
+            CAST('1900-01-01' AS TIMESTAMP)
+        )
+        FROM {{ this }}
+    )
+
+{% endif %}
