@@ -7,7 +7,7 @@ An end-to-end modern data engineering pipeline built for a retail (**Walmart**) 
 - **Data Processing & Lakehouse:** Databricks, Apache Spark, Delta Lake
 - **Transformations & Modeling:** dbt (with Jinja, ephemeral models, tests, and snapshots)
 - **Orchestration:** Apache Airflow (Dockerized)
-- **Sources:** Hosted Postgres / Agentic Database (`Neon`) & AWS S3
+- **Sources:** Hosted Postgres / Agentic Database (`Neon`) 
 - **Version Control & IDE:** Git, GitHub, VS Code, Python
 
 ## Architecture & Pipeline Layers
